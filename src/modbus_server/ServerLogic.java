@@ -6,23 +6,26 @@ import de.re.easymodbus.server.ModbusServer;
 
 public class ServerLogic {
 
+    // Initial server setup
     public static void serverSetup(ModbusServer server, String stringPort) throws Exception {
 
         int port = 0;
 
+        // If text in portField is an integer
         if (stringPort.matches("\\d+")) {
             port = Integer.parseInt(stringPort);
         } else {
             throw new Exception("INVALID PORT NUMBER");
         }
-        if (port < 1024 || port > 65535) {
+                
+        // If port is in registered or private range
+        if (port > 1023 && port < 65536)
+            client.setPort(port);
+        else
             throw new Exception("INVALID PORT NUMBER");
-        } else {
-            server.setPort(port);
-        }
-        server.setClientConnectionTimeout(20000);
     }
 
+    // Start listening on specified port
     public static void startServer(ModbusServer server) throws Exception {
         try {
             server.Listen();
@@ -31,15 +34,18 @@ public class ServerLogic {
         }
     }
 
+    // Stop listening
     public static void stopServer(ModbusServer server) throws ThreadDeath {
+        // StopListening method is not working properly
         server.StopListening();
-        // stopTask(timer);
     }
 
+    // Change specified coil state to "true"
     public static void setCoil(ModbusServer server, int coil) {
         server.coils[coil] = true;
     }
 
+    // Change specified coil state to "false"
     public static void unsetCoil(ModbusServer server, int coil) {
         server.coils[coil] = false;
     }

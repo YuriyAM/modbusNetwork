@@ -29,16 +29,16 @@ public class ClientControl {
     @FXML private JFXTextField ipField;
     @FXML private JFXTextField portField;
     @FXML private Label headLabel;
-    @FXML private Label stopLabel;
 
+    // Modbus client declaration
     private ModbusClient client = new ModbusClient();
+    // Declare Timeline to continuously update server info
     Timeline timeline = new Timeline();
 
     @FXML   // GUI additional initial setup
     public void initialize() {
 
-        // Initial setup and fade transition setup for stopLabel
-        stopLabel.setText("");
+        /* TODO */
 
     } // End of GUI additional initial setup
  
@@ -78,9 +78,12 @@ public class ClientControl {
             ClientLogic.unsetCoil(client, 1);
         }
     }
+
+    // Change UI after clicking "CONNECT"
     private void connectClientGUI() {
+        String redColor = "#f44336";
         headLabel.setText("CLIENT IS CONNECTED");
-        connectionBtn.setStyle("-fx-background-color: #f44336");
+        connectionBtn.setStyle("-fx-background-color: " + redColor);
         connectionBtn.setText("DISCONNECT");
 
         firstToggle.setDisable(false);
@@ -89,9 +92,11 @@ public class ClientControl {
         portField.setEditable(false);
     }
 
+    // Change UI after clicking "DISCONNECT"
     private void disconnectClientGUI() {
+        String greenColor = "#009688";
         headLabel.setText("MODBUS CLIENT");
-        connectionBtn.setStyle("-fx-background-color: #009688");
+        connectionBtn.setStyle("-fx-background-color: " + greenColor);
         connectionBtn.setText("CONNECT");
 
         firstToggle.setDisable(true);
@@ -100,6 +105,7 @@ public class ClientControl {
         portField.setEditable(true);
     }
 
+    // Clicking button to connect or disconnect from server
     public void setConnection(ActionEvent event) {
 
         if (connectionBtn.getText().equals("CONNECT")) {
@@ -108,7 +114,7 @@ public class ClientControl {
                 ClientLogic.connectClient(client);
                 connectClientGUI();
 
-                // Update slaves info every second
+                // Update server info every 5 seconds
                 updateGUI();
 
             } catch (Exception e) {
@@ -125,12 +131,12 @@ public class ClientControl {
         }
     }
 
-    // Exit button click event handler
+    // Exit button event handler
     public void exitApp(ActionEvent event) {
         System.exit(0);
     }
 
-    // GUI Updating
+    // Update server information every 5 seconds and display changes
     private void updateGUI(){
         timeline = new Timeline(new KeyFrame(Duration.seconds(5), event -> {
             try {

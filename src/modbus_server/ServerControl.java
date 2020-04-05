@@ -35,14 +35,15 @@ public class ServerControl implements ICoilsChangedDelegator{
 
     // Label fade out transition declaration
     private FadeTransition fadeOut = new FadeTransition(Duration.millis(3000));
-    // Modbus master declaration
+    // Modbus server declaration
     private ModbusServer server = new ModbusServer();
     
-
     @FXML   // GUI additional initial setup
     public void initialize() {
 
+        // Set handler for coils update event
         server.setNotifyCoilsChanged(this);
+
         // Automatically generate port number
         int port = ServerRestriction.getPort();
         headLabel.setText(port == 0 ? "NO AVAILABLE PORTS" : "MODBUS SERVER");
@@ -68,7 +69,7 @@ public class ServerControl implements ICoilsChangedDelegator{
 
     } // End of GUI additional initial setup
 
-    // GUI element setup after server starting
+    // Change GUI after clicking "START"
     private void startServerGUI() {
         headLabel.setText("SERVER IS RUNNING");
         firstToggle.setDisable(false);
@@ -78,7 +79,7 @@ public class ServerControl implements ICoilsChangedDelegator{
         stopServerBtn.setDisable(false);
     }
 
-    // GUI element setup after server stopping
+    // Change GUI after clicking "STOP"
     private void stopServerGUI() {
         headLabel.setText("MODBUS SERVER");
         firstToggle.setDisable(true);
@@ -92,14 +93,19 @@ public class ServerControl implements ICoilsChangedDelegator{
     private void setToggle(Rectangle rect, Label label) {
         String greenColor = "#009688";
         rect.setFill(Color.web(greenColor));
+
+        // Using Platform.runLater because this method can be called
+        // outside of JavaFX thread while handling coils changes
         Platform.runLater(() -> label.setText("ON"));
-        
     }
 
     // Displaying toggle button deselection
     private void unsetToggle(Rectangle rect, Label label) {
         String redColor = "#f44336";
         rect.setFill(Color.web(redColor));
+
+        // Using Platform.runLater because this method can be called
+        // outside of JavaFX thread while handling coils changes
         Platform.runLater(() -> label.setText("OFF"));
     }
 
@@ -125,7 +131,7 @@ public class ServerControl implements ICoilsChangedDelegator{
         }
     }
 
-    // Start button click event handler
+    // Start button event handler
     public void startServer(ActionEvent event) {
         try {
             ServerLogic.serverSetup(server, portField.getText());
@@ -157,6 +163,7 @@ public class ServerControl implements ICoilsChangedDelegator{
         System.exit(0);
     }
 
+    // Change of coils event handler
     public void coilsChangedEvent(){
         firstToggle.setSelected(server.coils[1]);
         secondToggle.setSelected(server.coils[2]);

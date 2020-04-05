@@ -7,6 +7,7 @@ public class ServerRestriction {
 
     private static int port;
 
+    // Gets random free port
     public static int getPort() {
         try {
             ServerSocket s = new ServerSocket(0);

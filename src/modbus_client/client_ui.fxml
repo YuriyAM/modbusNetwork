@@ -57,11 +57,6 @@
                   <Font name="Segoe UI Bold" size="20.0" />
                </font>
             </JFXButton>
-            <Label fx:id="stopLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="411.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="300.0" text="Server stopping is not supported" textFill="#f44336">
-               <font>
-                  <Font name="Roboto Regular" size="11.0" />
-               </font>
-            </Label>
             <JFXTextField fx:id="ipField" focusColor="#009688" layoutX="79.0" layoutY="237.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="180.0" stylesheets="@ipTextField.css" text="127.0.0.1">
                <font>
                   <Font name="Segoe UI Bold" size="16.0" />
