@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="modbus_client.ClientControl">
+  <children>
+    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="300.0" style="-fx-background-color: #202124;" VBox.vgrow="NEVER">
+         <children>
+            <JFXToggleButton fx:id="firstToggle" disable="true" layoutX="206.0" layoutY="94.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#firstToggleAction" prefHeight="35.0" prefWidth="63.0" />
+            <JFXToggleButton fx:id="secondToggle" disable="true" layoutX="206.0" layoutY="165.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#secondToggleAction" prefHeight="35.0" prefWidth="63.0" />
+            <Rectangle fx:id="firstBtn" arcHeight="20.0" arcWidth="20.0" fill="#f44336" height="51.0" layoutX="32.0" layoutY="86.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="153.0" />
+            <Rectangle fx:id="secondBtn" arcHeight="20.0" arcWidth="20.0" fill="#f44336" height="51.0" layoutX="32.0" layoutY="157.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="153.0" />
+            <Label fx:id="headLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="34.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="300.0" text="MODBUS CLIENT" textFill="#ffc000">
+               <font>
+                  <Font name="Roboto Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="firstBtnLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="87.0" prefHeight="51.0" prefWidth="127.0" text="OFF" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="secondBtnLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="157.0" prefHeight="51.0" prefWidth="127.0" text="OFF" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="exitBtn" alignment="CENTER" focusTraversable="false" graphicTextGap="1.0" layoutX="258.0" onAction="#exitApp" prefHeight="42.0" prefWidth="42.0" text="✖" textFill="#f44336">
+               <font>
+                  <Font name="Calibri" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="portField" focusColor="#009688" layoutX="106.0" layoutY="297.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="153.0" stylesheets="@portTextField.css" text="504">
+               <font>
+                  <Font name="Segoe UI Bold" size="16.0" />
+               </font>
+            </JFXTextField>
+            <Label fx:id="secondBtnLabel1" contentDisplay="TEXT_ONLY" layoutX="42.0" layoutY="237.0" prefHeight="42.0" prefWidth="42.0" text="IP" textAlignment="CENTER" textFill="#ffc000" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="42.0">
+               <font>
+                  <Font name="Segoe UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="secondBtnLabel11" contentDisplay="TEXT_ONLY" layoutX="42.0" layoutY="297.0" prefHeight="42.0" prefWidth="63.0" text="PORT" textFill="#ffc000">
+               <font>
+                  <Font name="Segoe UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="connectionBtn" buttonType="RAISED" layoutX="36.0" layoutY="365.0" onAction="#setConnection" prefHeight="42.0" prefWidth="228.0" style="-fx-background-color: #009688;" text="CONNECT">
+               <font>
+                  <Font name="Segoe UI Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="stopLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="411.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="300.0" text="Server stopping is not supported" textFill="#f44336">
+               <font>
+                  <Font name="Roboto Regular" size="11.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="ipField" focusColor="#009688" layoutX="79.0" layoutY="237.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="180.0" stylesheets="@ipTextField.css" text="127.0.0.1">
+               <font>
+                  <Font name="Segoe UI Bold" size="16.0" />
+               </font>
+            </JFXTextField>
+         </children></AnchorPane>
+  </children>
+</VBox>

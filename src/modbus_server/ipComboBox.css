@@ -1,0 +1,13 @@
+.jfx-combo-box {
+    -fx-background-color: TRANSPARENT;
+    -fx-font-weight: BOLD;
+    -fx-font-family: 'Segoe UI';
+    -fx-font-size: 16;
+    -fx-text-inner-color: #ffc000;
+    -fx-prompt-text-fill: #ffc000;
+}
+
+.jfx-combo-box .cell {
+    -fx-background-color: #202124;
+    -fx-text-fill: #ffc000;
+}
