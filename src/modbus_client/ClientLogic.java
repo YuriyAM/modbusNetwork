@@ -57,7 +57,7 @@ public class ClientLogic {
         }
     }
 
-        
+    // Change specified coil state to "false"    
     public static void unsetCoil(ModbusClient client, int coil){
         try {
             client.WriteSingleCoil(coil, false);
