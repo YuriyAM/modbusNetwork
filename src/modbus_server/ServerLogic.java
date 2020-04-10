@@ -20,7 +20,7 @@ public class ServerLogic {
                 
         // If port is in registered or private range
         if (port > 1023 && port < 65536)
-            client.setPort(port);
+            server.setPort(port);
         else
             throw new Exception("INVALID PORT NUMBER");
     }
